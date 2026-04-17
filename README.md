@@ -51,7 +51,7 @@ The absolute easiest way to start writing is to run the entire backend and front
 
 2. **Spin up the stack:**
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
    *Note: The first spin up might take a few minutes as the Python background service downloads the required LanguageTool Java binaries.*
 
