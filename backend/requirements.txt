@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+language_tool_python
+google-generativeai
