@@ -15,7 +15,9 @@ Novel Writer is a modern, responsive, and deeply customizable workspace designed
 * **AI-Assisted Writing**: 
   * **Offline Grammar Checking**: Utilizes `language_tool_python` running entirely locally over Python.
   * **Paragraph Enhancement**: Select a Google Gemini API Key in the settings, and seamlessly request the LLM to rewrite your paragraphs to be more vivid and engaging.
+* **Secure Multi-Author Context**: Create a dedicated account allowing complete independence. Your novels are cryptographically tied to you via JSON Web Tokens, ensuring your concepts stay yours.
 * **Organized Library**: Keep your writing streamlined with distinct Novel entities and underlying chapters. Auto-saves locally.
+* **Flexible Management**: Make a mistake? Seamlessly edit your Novel Title & Synopsis inline, or permanently trash an entire book structure with the built in Delete safety confirmations.
 
 ## 🚀 Tech Stack
 
@@ -29,13 +31,15 @@ Novel Writer is a modern, responsive, and deeply customizable workspace designed
 - Python / FastAPI
 - SQLite (Effortless local DB)
 - SQLAlchemy / Pydantic
+- `passlib` & `python-jose` (Secure JWT Authentication)
 - `language_tool_python` & `google-generativeai`
 
 ---
 
 ## 🐋 Getting Started (Docker - Recommended)
 
-The absolute easiest way to start writing is to run the entire backend and frontend suite inside a single Docker command.
+The absolute easiest way to start writing is to run the entire backend and frontend suite inside a single Docker command. 
+*Note: The frontend builds into a static Nginx instance and uses Docker multi-staged builds for maximum production-parity!*
 
 ### Prerequisites
 - [Docker](https://docs.docker.com/get-docker/)

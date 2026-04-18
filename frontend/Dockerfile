@@ -1,4 +1,5 @@
-FROM node:22-alpine
+# Build Stage
+FROM node:22-alpine as build-stage
 
 WORKDIR /app
 
@@ -6,9 +7,13 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+RUN npm run build
 
-# Ensure vite explicitly binds to 0.0.0.0
-ENV HOST=0.0.0.0
-EXPOSE 5173
+# Production Stage
+FROM nginx:alpine as production-stage
 
-CMD ["npm", "run", "dev", "--", "--host"]
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

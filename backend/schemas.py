@@ -2,6 +2,25 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None
+
+class AuthorBase(BaseModel):
+    username: str
+
+class AuthorCreate(AuthorBase):
+    password: str
+
+class AuthorResponse(AuthorBase):
+    id: int
+    
+    class Config:
+        from_attributes = True
+
 class ChapterBase(BaseModel):
     title: str
     content: str = ""
@@ -28,8 +47,13 @@ class NovelBase(BaseModel):
 class NovelCreate(NovelBase):
     pass
 
+class NovelUpdate(BaseModel):
+    title: Optional[str] = None
+    synopsis: Optional[str] = None
+
 class Novel(NovelBase):
     id: int
+    author_id: int
     created_at: datetime
     chapters: List[Chapter] = []
     

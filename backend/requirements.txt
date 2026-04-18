@@ -4,3 +4,6 @@ sqlalchemy
 pydantic
 language_tool_python
 google-generativeai
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
